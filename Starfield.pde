@@ -18,6 +18,7 @@ void setup()
 	for(int i = 0; i < yellowStars.length; i++){
 		yellowStars[i] = new NormalParticle2();
 	}
+	
 }
 	
 void draw()
@@ -29,12 +30,13 @@ void draw()
 		starfield[i].show();
 
 	}
+	
 	for(int i = 0; i < yellowStars.length; i++){
 		yellowStars[i].move();
 		yellowStars[i].show();
 
 	}
-    
+  
 
 }
 
@@ -53,14 +55,20 @@ class NormalParticle implements Particle
 	NormalParticle(){
 		x = 250;//(int)(Math.random()*500);
 		y = 250;//(int)(Math.random()*500); 
-		speed = (Math.random()*5); 
+		speed = (Math.random()*3); 
 		angle = Math.PI*2*Math.random();
 		c = color((int)(Math.random()*15)+216,(int)(Math.random()*100)+110,(int)(Math.random()*50)+220);
 	}
 
 		public void move(){
-			x = Math.cos(angle+.3)*speed+ x;
-			y = Math.sin(angle+.3)*speed+ y;
+			x = Math.cos(angle)*speed+ x;
+			y = Math.sin(angle)*speed+ y;
+			angle += .01;
+
+			if(x<0 || x>500 || y<0||y>500){
+				x = 250;
+				y = 250;
+			}
 		}
 
 		public void show(){
@@ -77,8 +85,12 @@ interface Particle
 	public void move();
 	public void show();
 
+
+
 }
+
 class OddballParticle implements Particle//uses an interface
+
 {
 	//your code here
 	int x;
@@ -136,6 +148,10 @@ class NormalParticle2 extends NormalParticle//uses inheritance
 {
 	//your code here
 	public void show(){
-		fill((int)(Math.random()*15)+240,(int)(Math.random()*93)+100,(int)(Math.random()*5)+30);
+		fill(255,255,102);
 	}
+
+		//int c = color(255,255,102);//((int)(Math.random()*15)+240,(int)(Math.random()*93)+100,(int)(Math.random()*5)+30);
+
+	
 }
