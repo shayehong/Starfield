@@ -3,7 +3,7 @@ Particle[] starfield;
 void setup()
 {
 	//your code here
-	size(500,500);
+	size(700,700);
 	//background(0);
 	starfield = new Particle[150];
 
@@ -45,8 +45,8 @@ class NormalParticle implements Particle
 	int cB;
 
 	NormalParticle(){
-		x = 250;//(int)(Math.random()*500);
-		y = 250;//(int)(Math.random()*500); 
+		x = 350;//(int)(Math.random()*500);
+		y = 350;//(int)(Math.random()*500); 
 		cR = (int)(Math.random()*186); 
 		cG =(int)(Math.random()*136)+112;
 		cB = (int)(Math.random()*147)+116;
@@ -59,9 +59,9 @@ class NormalParticle implements Particle
 			y = Math.sin(angle)*speed+ y;
 			angle += .0015;
 
-			if(x<0 || x>500 || y<0||y>500){
-				x = 250;
-				y = 250;
+			if(x<0 || x>700 || y<0||y>700){
+				x = 350;
+				y = 350;
 			}
 		}
 
@@ -92,8 +92,8 @@ class OddballParticle implements Particle//uses an interface
 	int c;
 
 	OddballParticle(){
-		x = 250;
-		y = 250;
+		x = 350;
+		y = 350;
 		c = color(255,0,0);
 
 	}
