@@ -1,23 +1,18 @@
 //your code h
 Particle[] starfield;
-Particle[] yellowStars;
 void setup()
 {
 	//your code here
 	size(500,500);
 	//background(0);
-	starfield = new Particle[100];
-	yellowStars = new Particle[50];
+	starfield = new Particle[150];
 
 	for(int i = 0; i < starfield.length-1; i++){
 		starfield[i] = new NormalParticle();
 	}
-		starfield[98] = new OddballParticle();
-		starfield[99] = new JumboParticle();
+		starfield[148] = new OddballParticle();
+		starfield[149] = new JumboParticle();
 
-	for(int i = 0; i < yellowStars.length; i++){
-		yellowStars[i] = new NormalParticle2();
-	}
 	
 }
 	
@@ -31,11 +26,6 @@ void draw()
 
 	}
 	
-	for(int i = 0; i < yellowStars.length; i++){
-		yellowStars[i].move();
-		yellowStars[i].show();
-
-	}
   
 
 }
@@ -50,20 +40,24 @@ class NormalParticle implements Particle
 	double y;
 	double angle;
 	double speed;
-	int c;
+	int cR;
+	int cG;
+	int cB;
 
 	NormalParticle(){
 		x = 250;//(int)(Math.random()*500);
 		y = 250;//(int)(Math.random()*500); 
-		speed = (Math.random()*3); 
+		cR = (int)(Math.random()*186); 
+		cG =(int)(Math.random()*136)+112;
+		cB = (int)(Math.random()*147)+116;
+		speed = (Math.random()*2); 
 		angle = Math.PI*2*Math.random();
-		c = color((int)(Math.random()*15)+216,(int)(Math.random()*100)+110,(int)(Math.random()*50)+220);
 	}
 
 		public void move(){
 			x = Math.cos(angle)*speed+ x;
 			y = Math.sin(angle)*speed+ y;
-			angle += .01;
+			angle += .0015;
 
 			if(x<0 || x>500 || y<0||y>500){
 				x = 250;
@@ -73,7 +67,7 @@ class NormalParticle implements Particle
 
 		public void show(){
 			noStroke();
-			fill(c);
+			fill(cR,cG,cB);
 			ellipse((float)x,(float)y,4,4);
 		}
 
@@ -99,10 +93,7 @@ class OddballParticle implements Particle//uses an interface
 
 	OddballParticle(){
 		x = 250;
-		y = 250;/*
-		speed = (Math.random()*3); 
-		angle = Math.PI*2*Math.random();
-		*/
+		y = 250;
 		c = color(255,0,0);
 
 	}
@@ -144,14 +135,3 @@ class JumboParticle extends NormalParticle//uses inheritance
 	}
 }
 
-class NormalParticle2 extends NormalParticle//uses inheritance
-{
-	//your code here
-	public void show(){
-		fill(255,255,102);
-	}
-
-		//int c = color(255,255,102);//((int)(Math.random()*15)+240,(int)(Math.random()*93)+100,(int)(Math.random()*5)+30);
-
-	
-}
